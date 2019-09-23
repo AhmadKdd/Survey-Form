@@ -1,0 +1,471 @@
+:root{
+
+    --opaBlack:rgb(106, 91, 238);
+    --iconMinWidth:50%;
+    --iconMinHeight:100%;
+    --boxShadowRadius: 15px;
+    --boxShadoColorHover:  0 0 1px 3px rgba(255, 68, 0, 0.685);
+    --boxShadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08); 
+    --boxShadowFocusSelectedchecked: 0 0 1px 3px rgb(59, 152, 252);
+    --standOutColor:  rgb(59, 152, 252);
+    --backGroundColorFields:rgba(245, 245, 245, 0.233);
+    }
+    *, *::before, *::after{
+        box-sizing: border-box;
+    }
+    
+    body{
+        margin:0;
+        font-family: 'Raleway', sans-serif;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    label{
+        display: block;
+    }
+    
+    main{
+        padding: 1em .5em;
+        background: 	whitesmoke;
+    }
+    form{
+        width:100%;
+        height: 100%;
+    }
+    
+    .container{
+        
+        width: 100%;
+        margin: 0 0 1em 0;  
+        padding: 2em 1.5em;
+        border-radius: 2px;
+        box-shadow: var(--boxShadow);
+        background-color:  white;
+    }
+    
+    .mini-container{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1em;
+        
+    } 
+    
+    .mini-container:not(.text){
+        box-shadow: var(--boxShadow);
+        background-color:  white;
+        padding: 2em 1.5em;
+    }
+    #survey-header{
+        position: relative;
+        height: 20%;
+        font-weight: 600;
+        color: white;
+        margin-bottom:  1em;
+        padding: 1em;
+        z-index: 0;
+       text-align: center;
+       border-radius: 2px;
+       box-shadow: var(--boxShadow);
+    }
+    #survey-header::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0; 
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background-color: rgba(3, 31, 47, 0.507);
+        border-radius: 2px;
+    
+    }
+    #survey-header::after{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0; 
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+        background-image: url("http://www.pngall.com/wp-content/uploads/2016/06/Browsers-Free-Download-PNG.png");
+        background-position: center;
+        background-size: 80% 100%;
+        background-repeat: no-repeat;
+        border-radius: 2px;
+    }
+    
+    .text{
+        margin: 0;
+        padding: 1em 0;
+    }
+    .text-field, #dropdown,textarea{
+        font-size: 1em;
+        width: 100%;
+        max-width: 403px ;
+        border-radius: 3px;
+        height: 3em;
+        padding-left: 1em; 
+        outline: none;
+        border: none;
+        box-shadow: var(--boxShadow);
+        background-color: var(--backGroundColorFields);
+    }
+    
+    
+    .text-field:focus, #dropdown:focus, textarea:focus{
+        
+        box-shadow: var(--boxShadowFocusSelectedchecked);
+    }
+    .text-field:invalid,textarea:invalid{
+        background-color: #ffd3cace;
+    }
+    
+    .scondary-description{
+        font-size: 1em;
+        margin: 0;
+        margin-bottom: 1em;
+        font-weight: bold; 
+        text-align: center; 
+    }
+    
+    .mini-container label:not(.scondary-description){
+        font-size: 1em;
+        margin-bottom: 1em;
+    }
+    
+    
+    #browser-area{
+        display: grid;
+        grid-template:  1fr  / repeat(auto-fit, minmax(145px, auto));
+        justify-content: center;
+        grid-gap: .5em;
+        
+        
+    }
+    #browser-description{
+        grid-column: 1/-1;
+        grid-row: 1;
+        justify-self: center;
+        align-self: center;
+    }
+    
+    #browser-area label{
+        display: flex;
+        position: relative;
+        z-index: 0  ;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1em;
+        width:100%;
+        padding:  .5em;
+        height: 4em;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-color:var(--backGroundColorFields);
+        border-radius: var(--boxShadowRadius);
+    }
+    #browser-area .radio{
+        position: absolute;
+        opacity: 0;
+        height: 0;
+        width: 0;
+    }
+
+    #label-text{
+        margin: auto;
+    }
+
+    #browser-area label #radio-other{
+        position: absolute;
+        visibility: hidden;
+        top:0;
+        left:0;
+        width: 100% ;
+        max-width: none;
+        height: 100%;
+        padding-left: 0.5em; 
+        font-size: 1em;
+        text-align: center;
+        user-select: all;
+        resize: none;
+        box-shadow:none;
+        z-index: -1;
+        border-radius: var(--boxShadowRadius);
+    }
+
+   #radio-other:focus{
+        z-index: 1000 !important;
+    }
+
+    .cover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        border-radius: var(--boxShadowRadius);
+        box-shadow: var(--boxShadow);
+      }
+      
+      #browser-area #radio-label::after{
+        content: "";
+        right: 0em;
+        min-width:  var(--iconMinWidth);
+        min-height: var(--iconMinHeight);   
+        background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Firefox_Logo%2C_2017.svg/1200px-Firefox_Logo%2C_2017.svg.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: right;
+    }
+    #browser-area #radio2-label::after{
+        content: "";
+        right: 0em;
+        min-width:  var(--iconMinWidth);
+        min-height: var(--iconMinHeight);  
+        background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Chrome_icon_%28September_2014%29.svg/1200px-Google_Chrome_icon_%28September_2014%29.svg.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: right;
+    }
+    #browser-area #radio3-label::after{
+        content: "";
+        right: 0em;
+        min-width:  var(--iconMinWidth);
+        min-height: var(--iconMinHeight);  
+        background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Safari_browser_logo.svg/1200px-Safari_browser_logo.svg.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: right;
+    }
+    
+    #browser-area #radio4-label::after{
+        content: "";
+        right: 0em;
+        min-width:  var(--iconMinWidth);
+        min-height: var(--iconMinHeight);  
+        background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Microsoft_Edge_logo.svg/1200px-Microsoft_Edge_logo.svg.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: right;
+    }
+    
+    #browser-area #radio5-label::after{
+        content: "";
+        right: 0em;
+        min-width:  var(--iconMinWidth);
+        min-height: var(--iconMinHeight);  
+        background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Internet_Explorer_10%2B11_logo.svg/1043px-Internet_Explorer_10%2B11_logo.svg.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: right;
+    } 
+    
+    #browser-area #radio6-label::after{
+        content: "";
+        right: 0em;
+        min-width:  var(--iconMinWidth);
+        min-height: var(--iconMinHeight);  
+        background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Opera_2015_icon.svg/1200px-Opera_2015_icon.svg.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: right;
+    }
+    
+    input:hover ~ .cover{
+       box-shadow : var(--boxShadoColorHover);
+    }
+    
+    input:checked ~ .cover{
+        box-shadow:  var(--boxShadowFocusSelectedchecked);
+    }
+    #browser-use-for-area{
+        justify-content: space-evenly;
+    }
+    
+    #dropdown:hover{
+        background-color: var(--backGroundColorHover);
+    }
+    
+    #browser-features-area{
+        display: grid;
+        grid-template:  1fr  / repeat(auto-fit, minmax(145px, auto));
+        justify-content: center;
+        grid-gap: .6em;
+       
+    }
+    
+    #browser-features-description{
+        grid-column: 1/-1;
+        grid-row: 1;
+        justify-self: center;
+        align-self: center;
+    }
+    
+    #browser-features-area label{
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1em;
+        width:100%;
+        padding:  .5em;
+        height: 3em;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-color:var(--backGroundColorFields);
+        border-radius: var(--boxShadowRadius);
+    }
+    
+    #browser-features-area .checkbox{
+        position: absolute;
+        opacity: 0;
+        height: 0;
+        width: 0;
+    }
+    
+    #browser-features-area label  span{
+        margin: auto;
+        text-align: center;
+    }
+    
+    textarea{
+        height: 9em;
+        padding-top: 1em;
+    }
+    
+    .submit{
+        display: block;
+        background-color: var(--standOutColor);
+        border: none;
+        outline: none;
+        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.212), 0 0 0 2px rgba(0, 0, 0, 0.103);
+        width: 100%;
+        height: 2em;
+        margin-top: 1em;
+        font-size: 1em;
+        font-weight: bold;
+        border-radius: 3px;
+        color: white;
+        cursor: pointer;
+    }
+    .submit:hover{
+        background-color:rgba(255, 68, 0, 0.835);
+    }
+    
+    
+     @media (min-width: 500px){
+    
+        Main{
+            padding: 0 3em;
+        }
+        .scondary-description{
+            
+            text-align: center; 
+        }
+     }
+    
+     @media (min-width: 600px){
+    
+        Main{
+            padding: 0 4em;
+        }
+        
+        .container{
+            padding: 1.5em 1.5em;
+        }
+    
+        .scondary-description{
+            
+            text-align: left; 
+        }
+    
+        #browser-area,#browser-features-area{
+            justify-content: start;
+        }
+        
+        #browser-description, #browser-features-description{
+    
+            justify-self: start;
+        }
+    
+        .text{
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 23em;
+        }
+    
+        .text-field:not(#radio-other){
+            max-width: 300px;
+        }
+    
+        .mini-container label:not(.scondary-description){
+            margin: 0;
+        }
+    
+        .submit{
+            width: 5em;
+        }
+        
+     }
+    @media (min-width: 700px){
+        main{
+            padding: 0 15%;
+        }
+    }
+    
+
+    
+    select {
+        border:none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        -ms-appearance: none; 
+      background-image:
+        linear-gradient(45deg, transparent 50%, gray 50%),
+        linear-gradient(135deg, gray 50%, transparent 50%),
+        linear-gradient(to right, #ccc, #ccc);
+      background-position:
+        calc(100% - 20px) calc(1em + 2px),
+        calc(100% - 15px) calc(1em + 2px),
+        calc(100% - 2.5em) 0.5em;
+      background-size:
+        5px 5px,
+        5px 5px,
+        1px 1.5em;
+      background-repeat: no-repeat;
+    }
+    
+    select:focus {
+      background-image:
+        linear-gradient(45deg, green 50%, transparent 50%),
+        linear-gradient(135deg, transparent 50%, green 50%),
+        linear-gradient(to right, #ccc, #ccc);
+      background-position:
+        calc(100% - 15px) 1em,
+        calc(100% - 20px) 1em,
+        calc(100% - 2.5em) 0.5em;
+      background-size:
+        5px 5px,
+        5px 5px,
+        1px 1.5em;
+      background-repeat: no-repeat;
+      border-color: green;
+      outline: 0;
+    }
+    
+    
+    select:-moz-focusring {
+      color: transparent;
+      text-shadow: 0 0 0 #000;
+    }
+    
